@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - frame_otaku</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-100">
+  <h1 class="text-3xl font-bold mb-6">Your Cart 🛒</h1>
+  <div id="cart-items" class="bg-white p-4 rounded-lg shadow-lg"></div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartDiv = document.getElementById('cart-items');
+    if (cart.length === 0) {
+      cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      cartDiv.innerHTML = cart.map(item => `<p>${item.product} - $${item.price}</p>`).join("");
+    }
+  </script>
+</body>
+</html>
